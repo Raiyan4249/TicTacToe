@@ -120,7 +120,7 @@ public class TicTacToe extends JFrame implements ActionListener{
                         check();
                         if(!check() && boardFull())
                         {
-                            headLabel.setText("Draw!!!");
+                             drawCheck();
                         }
                     }
                 }
@@ -149,8 +149,6 @@ public class TicTacToe extends JFrame implements ActionListener{
     }
     public void firstTurn()
     {
-        
-
         if(random.nextInt(2)== 0)
         {
             playerXl = true;
@@ -341,6 +339,18 @@ public class TicTacToe extends JFrame implements ActionListener{
         controPanel.setVisible(true);
     }
 
+     public void drawCheck()
+    {
+        for(int i=0; i<buttons.length;i++)
+        {
+            headLabel.setText("Draw!!!!");
+           buttons[i].setBackground(Color.DARK_GRAY);
+           buttons[i].setEnabled(false);
+        }
+        controPanel.setVisible(true);
+    }
+
+
     public boolean boardFull()
     {
         for(int i=0; i<buttons.length;i++)
@@ -351,17 +361,6 @@ public class TicTacToe extends JFrame implements ActionListener{
             }
         }
         return true;
-    }
-
-    public void drawCheck()
-    {
-        for(int i=0; i<buttons.length;i++)
-        {
-            headLabel.setText("Draw!!!!");
-           buttons[i].setBackground(Color.DARK_GRAY);
-           buttons[i].setEnabled(false);
-        }
-        controPanel.setVisible(true);
     }
 
     public void resetBoard()
